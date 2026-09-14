@@ -143,40 +143,6 @@ Element `M[row][col]` maps to SRAM address: `base_offset + row*9 + col`
 
 ---
 
-## Running Simulation
-
-### Option 1 — Vivado GUI
-
-1. Create the project (first time only):
-   ```
-   vivado -mode batch -source setup_project.tcl
-   ```
-2. Open the project:
-   ```
-   vivado vivado_proj/matmul_9x9.xpr
-   ```
-3. In the Vivado GUI: **Flow → Run Simulation → Run Behavioral Simulation**
-4. In the Tcl console:
-   ```tcl
-   source tb_matmul.tcl
-   ```
-
-### Option 2 — Vivado Tcl Console (project already open)
-
-```tcl
-launch_simulation
-run all
-```
-
-### Option 3 — Command Line (xvlog/xelab/xsim)
-
-```bash
-cd sim
-xvlog --incr --relax -prj tb_matmul_vlog.prj
-xelab --debug typical -top tb_matmul -snapshot tb_matmul_behav
-xsim tb_matmul_behav -tclbatch tb_matmul.tcl
-```
-
 ---
 
 ## Testbench
